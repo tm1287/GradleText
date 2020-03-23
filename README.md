@@ -4,7 +4,7 @@ Ever take a break during a Gradle build, get up to go get some coffee only to re
 # Status
 Incomplete - Currently undergoing development
 
-#Usage
+# Usage
 Currently, this plugin publishes to a local Maven repository located at `build/repo`. If checkout out, the plugin can be build by running the task
 `gradlew publish`
 
