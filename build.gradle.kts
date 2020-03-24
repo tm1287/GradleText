@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.3.61"
     `java-gradle-plugin`
     `maven-publish`
+    //id("com.tejasm.gradle.gradletext") version "1.0.0"
 }
 
 group = "com.tejasm.gradle"
@@ -53,4 +54,18 @@ publishing {
         }
     }
 }
+
+buildscript {
+    repositories {
+        maven {
+            url = uri("$buildDir/repo")
+        }
+    }
+    dependencies {
+        classpath("com.tejasm.gradle:GradleText:1.0.0")
+    }
+}
+apply(plugin = "com.tejasm.gradle.gradletext")
+
+
 

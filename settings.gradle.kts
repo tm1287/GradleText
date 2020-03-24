@@ -3,7 +3,6 @@ pluginManagement {
         maven {
             url = uri("./repo")
         }
-
         gradlePluginPortal()
     }
 }

@@ -8,11 +8,18 @@ Incomplete - Currently undergoing development
 Currently, this plugin publishes to a local Maven repository located at `build/repo`. If checkout out, the plugin can be build by running the task
 `gradlew publish`
 
-Then this plugin can be implemented by appending the `plugin` section of your `build.gradle`
+Then this plugin can be implemented by appending your `build.gradle` with this
 
 ```
-plugins {
-    /..
-    id("com.tejasm.gradle.gradletext") version "1.0.0"
+buildscript {
+    repositories {
+        maven {
+            url = uri("$buildDir/repo")
+        }
+    }
+    dependencies {
+        classpath("com.tejasm.gradle:GradleText:1.0.0")
+    }
 }
+apply(plugin = "com.tejasm.gradle.gradletext")
 ```
