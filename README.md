@@ -5,21 +5,13 @@ Ever take a break during a Gradle build, get up to go get some coffee only to re
 Incomplete - Currently undergoing development
 
 # Usage
-Currently, this plugin publishes to a local Maven repository located at `build/repo`. If checkout out, the plugin can be build by running the task
-`gradlew publish`
+Currently this plugin publishes to both a local Maven repository as well as the Gradle community plugin repository. I would recommend implementation through the plugins DSL as shown below, however if you wish to compile from scratch, the Gradle task `gradlew publish` will generate the plugin in the local Maven repository located at `/builds/repo`. 
 
-Then this plugin can be implemented by appending your `build.gradle` with this
+This plugin can easily be implemented by appending the plugins section of your  `build.gradle` with this
 
 ```
-buildscript {
-    repositories {
-        maven {
-            url = uri("$buildDir/repo")
-        }
-    }
-    dependencies {
-        classpath("com.tejasm.gradle:GradleText:1.0.0")
-    }
+plugins {
+  //..
+  id "com.tejasm.gradle.gradletext" version "1.0.0"
 }
-apply(plugin = "com.tejasm.gradle.gradletext")
 ```

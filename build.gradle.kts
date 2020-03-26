@@ -2,7 +2,9 @@ plugins {
     kotlin("jvm") version "1.3.61"
     `java-gradle-plugin`
     `maven-publish`
-    //id("com.tejasm.gradle.gradletext") version "1.0.0"
+    id("nu.studer.credentials") version "2.1"
+    id("com.gradle.plugin-publish") version "0.10.1"
+    id("com.tejasm.gradle.gradletext") version "1.0.0"
 }
 
 group = "com.tejasm.gradle"
@@ -30,6 +32,8 @@ gradlePlugin {
     plugins {
         create("GradleText") {
             id = "com.tejasm.gradle.gradletext"
+            displayName = "Gradle Text Plugin"
+            description = "A plugin that notifies a user of build status via SMS"
             implementationClass = "com.tejasm.gradle.GradleTextPlugin"
         }
     }
@@ -55,17 +59,13 @@ publishing {
     }
 }
 
-buildscript {
-    repositories {
-        maven {
-            url = uri("$buildDir/repo")
-        }
-    }
-    dependencies {
-        classpath("com.tejasm.gradle:GradleText:1.0.0")
-    }
+pluginBundle {
+    website = "http://example.com"
+    vcsUrl = "https://github.com/tm1287/GradleText"
+    tags = listOf("SMS", "text", "build", "fail")
 }
-apply(plugin = "com.tejasm.gradle.gradletext")
+
+
 
 
 
